@@ -1,24 +1,32 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-	let disposable = vscode.commands.registerCommand('processingformatter.formatCode', () => {
-		const editor = vscode.window.activeTextEditor;
-		if (editor) {
-			const document = editor.document;
+	context.subscriptions.push(vscode.languages.registerDocumentFormattingEditProvider('pde', {
+		provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
 			const range = new vscode.Range(0, 0, document.lineCount - 1, document.lineAt(document.lineCount - 1).text.length);
-			editor.edit(editBuilder => {
-				editBuilder.replace(range, formatCode(document.getText()));
-			}).then(success => {
-				if (success) {
-					vscode.window.showInformationMessage('Code formatted successfully!');
-				} else {
+			try {
+				return [vscode.TextEdit.replace(range, formatCode(document.getText(range)))];
+			} catch (error) {
+				console.log(error);
+				vscode.window.showErrorMessage('Error formatting code');
+			}
+			return [vscode.TextEdit.replace(range, document.getText(range))];
+		}
+	}));
+
+	context.subscriptions.push(
+		vscode.languages.registerDocumentRangeFormattingEditProvider('pde', {
+			provideDocumentRangeFormattingEdits(document: vscode.TextDocument, range: vscode.Range): vscode.TextEdit[] {
+				try {
+					return [vscode.TextEdit.replace(range, formatCode(document.getText(range)))];
+				} catch (error) {
+					console.log(error);
 					vscode.window.showErrorMessage('Error formatting code');
 				}
-			});
-		}
-	});
-
-	context.subscriptions.push(disposable);
+				return [vscode.TextEdit.replace(range, document.getText(range))];
+			}
+		})
+	);
 }
 
 function formatCode(code: string): string {
@@ -90,6 +98,10 @@ function indentation(code: string): string {
 		// if } is on the same line, decrease indent
 		if (line.includes('}')) {
 			nextIdent--;
+			if (nextIdent < 0) {
+				nextIdent = 0;
+				console.error('Indentation error');
+			}
 		}
 
 		const trimmedLine = line.trim();

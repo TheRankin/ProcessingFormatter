@@ -4,7 +4,7 @@
   "description": "Procesing Code Formatter",
   "license": "MIT",
   "icon": "icon.png",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/TheRankin/ProcessingFormatter"
@@ -41,10 +41,16 @@
         ]
       }
     ],
-    "commands": [
+    "documentFormattingEditProvider": [
       {
-        "command": "processingformatter.formatCode",
-        "title": "Format Code"
+        "language": "pde",
+        "provider": "processingformatter.formatCode"
+      }
+    ],
+    "documentRangeFormattingEditProvider": [
+      {
+        "language": "pde",
+        "provider": "processingformatter.formatCode"
       }
     ]
   },

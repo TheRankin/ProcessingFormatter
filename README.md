@@ -2,13 +2,20 @@
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension allows you to format Processing code in Visual Studio Code. It provides a set of features to automatically format your Processing code, making it more readable and consistent. With this extension, you can easily apply formatting rules to your code, such as indentation, spacing, and line breaks.
 
-For example if there is an image subfolder under your extension project workspace:
+Features of the Processing Formatter extension include:
+
+- Formatting Processing code with a single command.
+- Integration with Visual Studio Code's built-in formatting capabilities.
+
+If you encounter any issues or have suggestions for improvement, please feel free to open an issue on the extension's GitHub repository.
+
+<!-- For example if there is an image subfolder under your extension project workspace:
 
 \!\[feature X\]\(images/feature-x.png\)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow. -->
 
 <!-- ## Requirements
 
@@ -16,13 +23,9 @@ If you have any requirements or dependencies, add a section describing those and
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `processingformatter.formatCode`: Format Processing Code.
+- `processingformatter.formatCode`: Format Processing Code.
 
 <!-- ## Known Issues
 
@@ -50,4 +53,4 @@ Added features X, Y, and Z. -->
 
 Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)

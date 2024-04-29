@@ -2,7 +2,16 @@
   "name": "processingformatter",
   "displayName": "ProcessingFormatter",
   "description": "Procesing Code Formatter",
-  "version": "0.0.1",
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheRankin/ProcessingFormatter"
+  },
+  "bugs": {
+    "url": "https://github.com/TheRankin/ProcessingFormatter/issues"
+  },
+  "publisher": "TheRankin",
   "engines": {
     "vscode": "^1.88.0"
   },
@@ -21,13 +30,13 @@
     "languages": [
       {
         "id": "pde",
-        "extensions": [
-          ".pde"
-        ],
         "aliases": [
           "Processing",
           "processing",
           "pde"
+        ],
+        "extensions": [
+          ".pde"
         ]
       }
     ],
@@ -35,14 +44,6 @@
       {
         "command": "processingformatter.formatCode",
         "title": "Format Code"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "processingformatter.formatCode",
-        "key": "ctrl+alt+f",
-        "when": "editorTextFocus && editorLangId == pde",
-        "mac": "cmd+alt+f"
       }
     ]
   },

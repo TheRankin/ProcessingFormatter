@@ -3,6 +3,7 @@
   "displayName": "ProcessingFormatter",
   "description": "Procesing Code Formatter",
   "license": "MIT",
+  "icon": "icon.png",
   "version": "1.0.0",
   "repository": {
     "type": "git",

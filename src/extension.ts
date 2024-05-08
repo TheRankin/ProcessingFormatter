@@ -31,11 +31,15 @@ export function activate(context: vscode.ExtensionContext) {
 
 function formatCode(code: string): string {
 
+	code = spaces(code);
+
 	code = semiColon(code);
 
 	code = keyOperator(code);
 
 	code = indentation(code);
+
+	code = methods(code);
 
 	code = conditions(code);
 
@@ -122,16 +126,48 @@ function indentation(code: string): string {
 }
 
 function conditions(code: string): string {
+	// Add space after if
+	code = code.replaceAll(/if\s*\(/gm, 'if (');
+
 	code = code.replaceAll(/\}[\s]*else \{/gm, '} else {');
 	return code;
 }
 
 function forLoop(code: string): string {
-	code = code.replaceAll(/for \([\s]*([\w\W]+?;)[\s]*([\w\W]+?;)[\s]*([\w+\-,]+)[\s]*?\)/gm, 'for ($1 $2 $3)');
+
+	// Format for
+	code = code.replaceAll(/for\s*\(\s*(\w+)\s+(\w+)\s*=\s*(\w+)?\s*;\s*(\w+)\s*([<>!=]+)\s*(\w+)\s*;\s*([\w-+=]+)\s*\)\s*{/gm, 'for ($1 $2=$3; $4$5$6; $7) {');
+
+	// Format foreach
+	code = code.replaceAll(/for\s*\(\s*(\w+)\s+(\w)\s+:\s+(\w+)\s*\)\s*{/gm, 'for ($1 $2: $3) {');
+
 	return code;
 }
 
 function variables(code: string): string {
 	code = code.replaceAll(/\n(?=.+\([\w ,]*\) *{)/gm, '\n\n');
+	return code;
+}
+
+function spaces(code: string): string {
+	code = code.replaceAll(/(?<![;\s]|\/\/.*|\*\/)[\s]{2,}/gm, ' ');
+	return code;
+}
+
+function methods(code: string): string {
+	// Remove spaces before (
+	code = code.replaceAll(/\s+\(/gm, '(');
+
+	// Remove spaces after (
+	code = code.replaceAll(/\(\s/gm, '(');
+
+	// Remove spaces before ,
+	code = code.replaceAll(/\s+,/gm, ',');
+
+	// Add space after ,
+	code = code.replaceAll(/,\s+/gm, ', ');
+
+	// Remove spaces before )
+	code = code.replaceAll(/(?=.)\s+\)/gm, ')');
 	return code;
 }

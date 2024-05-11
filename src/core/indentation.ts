@@ -1,3 +1,5 @@
+import { replace } from "./utils";
+
 export function indentation(code: string): string {
   // Indentation checking all lines
   let lines = code.split('\n');
@@ -22,7 +24,7 @@ export function indentation(code: string): string {
 
     const trimmedLine = line.trim();
     if (line.match(/^[\s]*\}/g)) {
-      formattedCode += trimmedLine.replace(/^[\s]*\}/g, `${'  '.repeat(nextIdent)}\}\n`);
+      formattedCode += replace(trimmedLine, /^[\s]*\}/g, `${'  '.repeat(nextIdent)}\}\n`);
     } else {
       if (trimmedLine.length > 0) {
         formattedCode += '  '.repeat(currentIdent) + trimmedLine + '\n';

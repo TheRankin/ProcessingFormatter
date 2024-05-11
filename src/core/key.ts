@@ -1,17 +1,19 @@
+import { replaceAll } from "./utils";
+
 export function key(code: string): string {
   /**
    * F "} <any space>"
    * T "}
    * <any space>"
    */
-  code = code.replaceAll(/\}(?=[\S ]+)/gm, '}\n');
+  code = replaceAll(code, /\}(?=[\S ]+)/gm, '}\n');
 
   /**
    * From <anything>}
    * To <anything>;
    * }
    */
-  code = code.replaceAll(/(?:[\w;]+ *)\}/gm, ';\n}');
+  code = replaceAll(code, /(?:[\w;]+ *)\}/gm, ';\n}');
   /**
    * F "}
    * <method name>(arg1,argN) {"
@@ -19,7 +21,7 @@ export function key(code: string): string {
    *
    * "
    */
-  code = code.replaceAll(/\}\n *(?=.+\([\w ,]*\) *\{)/gm, '}\n\n');
+  code = replaceAll(code, /\}\n *(?=.+\([\w ,]*\) *\{)/gm, '}\n\n');
 
 
   /**
@@ -27,12 +29,12 @@ export function key(code: string): string {
    * T "{
    * <method name>(arg1,argN)"
    */
-  code = code.replaceAll(/\{(?=[\S\w ]+)/gm, '{\n');
+  code = replaceAll(code, /\{(?=[\S\w ]+)/gm, '{\n');
 
   /**
    * F "<any space>{"
    * T " {"
    */
-  code = code.replaceAll(/[\s]*\{/gm, ' {');
+  code = replaceAll(code, /[\s]*\{/gm, ' {');
   return code;
 }

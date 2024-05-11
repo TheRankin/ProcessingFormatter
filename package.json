@@ -1,10 +1,10 @@
 {
   "name": "processingformatter",
   "displayName": "Processing Formatter",
-  "description": "Procesing Code Formatter",
+  "description": "A code formatter for Processing language",
   "license": "MIT",
   "icon": "icon.png",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/TheRankin/ProcessingFormatter"

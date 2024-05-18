@@ -1,7 +1,7 @@
 {
   "name": "processingformatter",
   "displayName": "Processing Code Formatter",
-  "description": "A code formatter for Processing language",
+  "description": "An unofficial code formatter for the Processing language",
   "license": "MIT",
   "icon": "icon.png",
   "version": "1.0.3",

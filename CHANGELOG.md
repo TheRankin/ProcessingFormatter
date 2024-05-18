@@ -2,6 +2,13 @@
 
 All notable changes to this extension will be documented in this file.
 
+## [1.0.4] - 2024-05-18
+
+### Changed
+
+- Icon, I don't have permission to use the previous icon :(.
+- Extension name, just to clarify this is not an official extension.
+
 ## [1.0.3] - 2024-05-11
 
 ### Added

@@ -2,6 +2,12 @@
 
 All notable changes to this extension will be documented in this file.
 
+## [1.0.5] - 2024-05-20
+
+### Changed
+
+- Icon, the previous one was awful.
+
 ## [1.0.4] - 2024-05-18
 
 ### Changed

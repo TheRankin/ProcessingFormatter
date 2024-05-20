@@ -4,7 +4,7 @@
   "description": "An unofficial code formatter for the Processing language",
   "license": "MIT",
   "icon": "icon.png",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/TheRankin/ProcessingFormatter"
